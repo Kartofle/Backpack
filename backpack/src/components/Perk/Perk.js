@@ -34,10 +34,9 @@ const perk = (props) => {
               symbol={props.symbol}
               icon={props.icon}
               level={props.level}/>
-            <PerkHeading 
-              title={props.title}
-              benefit={props.benefit}
-              cost={props.cost}/>
+            <PerkHeading heading={props.title}/>
+            <PerkHeading heading={props.benefit}/>
+            <PerkHeading heading={props.cost}/>
           </ExpansionPanelSummary>
 
           <ExpansionPanelDetails>
