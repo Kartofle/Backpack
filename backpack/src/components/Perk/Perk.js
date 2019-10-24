@@ -1,92 +1,64 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import Button from '@material-ui/core/Button';
 
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import Favorite from '@material-ui/icons/Favorite';
-import AddIcon from '@material-ui/icons/Add';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import PerkIcons from './PerkIcons/PerkIcons';
+import PerkHeading from './PerkHeading/PerkHeading';
+import PerkImage from './PerkImage/PerkImage';
+import PerkDetails from './PerkDetails/PerkDetails';
+import PerkTags from './PerkTags/PerkTag';
 
 const styles = theme => ({
-    card: {
-      maxWidth: 375,
-    },
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-    },
-    expand: {
-      transform: 'rotate(0deg)',
-      marginLeft: 'auto',
-      transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: 'rotate(180deg)',
-    },
-    avatar: {
-      backgroundColor: red[500],
-    },
-  });
-  
+  root: {
+    width: '100%',
+    fontVariant: 'all-small-caps',
+  },
+});
 
 const perk = (props) => {
-
     const { classes } = props;
 
     return (
-        <Card className={classes.card}>
-          <CardHeader
-            avatar={
-              <Avatar className={classes.avatar}>
-                {props.icon}
-              </Avatar>
-            } 
-            action={
-              <CardActions>
-                <FormControlLabel
-                  control={<Checkbox icon={<AddIcon />} 
-                  checkedIcon={<FavoriteIcon />} 
-                  value={props.onCharacterSheet} />}
-                />
-              </CardActions>
-            }
-            title={props.title}
-            subheader={props.subheader}      
-          />
-          <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {props.description}
-            </Typography>
-          </CardContent>
-            <CardMedia
-              className={classes.media}
-              image={props.image}
-              title="Paella dish"
-            />
-            <Typography variant="body2" color="textSecondary" component="p">
-              {props.lore}
-            </Typography>
-          
-        </Card>
+      <div className={classes.root}>
+        <ExpansionPanel>
+
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1c-content">
+            <PerkIcons 
+              symbol={props.symbol}
+              icon={props.icon}
+              level={props.level}/>
+            <PerkHeading 
+              title={props.title}
+              benefit={props.benefit}
+              cost={props.cost}/>
+          </ExpansionPanelSummary>
+
+          <ExpansionPanelDetails>
+            <PerkImage image={props.image} />
+            <PerkDetails 
+              heading={"Description"} 
+              info={props.description}/>
+            <PerkDetails 
+              heading={"Lore"} 
+              info={props.lore}/>
+          </ExpansionPanelDetails>
+
+          <ExpansionPanelActions>
+            <PerkTags tags={props.tags}/>
+            <Button size="small" color="primary">
+              Add
+            </Button>
+          </ExpansionPanelActions>   
+
+        </ExpansionPanel>
+      </div>
     );
 }
 
