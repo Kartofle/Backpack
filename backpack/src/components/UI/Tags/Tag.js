@@ -13,7 +13,7 @@ const styles = theme => ({
     },
   });
 
-const perkTags = (props) => {
+const tags = (props) => {
     const { classes } = props;
     const tags = props.tags
     const tag = tags.map((tag, index) => 
@@ -29,4 +29,4 @@ const perkTags = (props) => {
     );
 }
 
-export default withStyles(styles)(perkTags);
+export default withStyles(styles)(tags);

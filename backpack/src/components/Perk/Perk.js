@@ -7,17 +7,17 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 
-import PerkIcons from './PerkIcons/PerkIcons';
-import PerkHeading from './PerkHeading/PerkHeading';
-import PerkImage from './PerkImage/PerkImage';
-import PerkDetails from './PerkDetails/PerkDetails';
-import PerkTags from './PerkTags/PerkTag';
+import Heading from '../../components/UI/Heading/Heading';
+import Icon from '../../components/UI/Icon/Icon';
+import Image from '../../components/UI/Image/Image';
+import Details from '../../components/UI/Details/Details';
+import Tags from '../../components/UI/Tags/Tag';
 
 const styles = theme => ({
   root: {
     width: '100%',
     fontVariant: 'all-small-caps',
-  },
+  },  
 });
 
 const perk = (props) => {
@@ -25,32 +25,33 @@ const perk = (props) => {
 
     return (
       <div className={classes.root}>
-        <ExpansionPanel>
+        <ExpansionPanel square={false}>
 
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1c-content">
-            <PerkIcons 
-              symbol={props.symbol}
-              icon={props.icon}
-              level={props.level}/>
-            <PerkHeading heading={props.title}/>
-            <PerkHeading heading={props.benefit}/>
-            <PerkHeading heading={props.cost}/>
+            <Icon icon={props.icon}/>
+            <Heading text={props.title}/>
+            <Heading text={props.benefit}/>
+            <Heading text={props.cost}/>
           </ExpansionPanelSummary>
 
           <ExpansionPanelDetails>
-            <PerkImage image={props.image} />
-            <PerkDetails 
-              heading={"Description"} 
-              info={props.description}/>
-            <PerkDetails 
-              heading={"Lore"} 
-              info={props.lore}/>
+            <div>
+              <Image 
+                title={"Image"}
+                image={props.image}/>
+              <Details 
+                heading={"Description"} 
+                info={props.description}/>
+              <Details 
+                heading={"Lore"} 
+                info={props.lore}/>
+            </div>
           </ExpansionPanelDetails>
 
           <ExpansionPanelActions>
-            <PerkTags tags={props.tags}/>
+            <Tags tags={props.tags}/>
             <Button size="small" color="primary">
               Add
             </Button>

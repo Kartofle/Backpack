@@ -1,48 +1,25 @@
 import React, {Component, Fragment} from 'react';
-import axios from '../../axios-perks';
+import axios from '../../axios-bp';
 
 import Perk from '../../components/Perk/Perk';
 
 class Perks extends Component {
     state = {
-        perks: [
-            // {
-            // id: '891374910101',
-            // symbol: "Fire",
-            // icon: "T",
-            // level: 4,
-            // title: "Test Perk",
-            // benefit: "This Perk ads 2 to Testing",
-            // description: "A coder knows testing is important this perk helps with that",
-            // lore: "Testing dates back to the primitive cave coders",
-            // onCharacterSheet: false,
-            // image: "test.png",
-            // cost: [20, 10],
-            // },
-            // {
-            // id: '02940909820',
-            // symbol: "Earth",
-            // icon: "B",
-            // level: 2,
-            // title: "Backup Perk",
-            // benefit: "This is a backup Perk",
-            // description: "A coder knows testing is important this perk helps with that",
-            // lore: "Testing dates back to the primitive cave coders",
-            // onCharacterSheet: true,
-            // image: "test.png",
-            // cost: [10],
-            // },
-        ]
+        perks: [],
     }
 
     componentDidMount () {
-        axios.get('https://next.json-generator.com/api/json/get/41_HZAtYv')
+        axios.get('/perks.json')
           .then(response => {
               this.setState( { perks: response.data } );
           })
           .catch(error => {
               console.log(error);
           });
+    }
+
+    addPerkHandler () {
+       
     }
 
     render() {
@@ -55,6 +32,7 @@ class Perks extends Component {
                         return <Perk 
                             key={perk.id}
                             symbol={perk.symbol}
+                            category={perk.category}
                             icon={perk.icon}
                             level={perk.level}
                             title={perk.title}

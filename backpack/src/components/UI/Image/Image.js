@@ -11,20 +11,20 @@ const styles = theme => ({
       color: theme.palette.text.secondary,
     },
     column: {
-      flexBasis: '33.33%',
+      flex: 1,
       textAlign: 'left',
     },
   });
 
-const perkDetails = (props) => {
+const image = (props) => {
     const { classes } = props;
 
     return (
         <div className={classes.column}>
-            <Typography className={classes.subHeading} children={props.heading}/>
-            <Typography className={classes.text} children={props.info}/>
+            <Typography className={classes.subHeading} children={props.title}/>
+            <img src={props.image} alt={''}/>
         </div>
     );
 }
 
-export default withStyles(styles)(perkDetails);
+export default withStyles(styles)(image);
