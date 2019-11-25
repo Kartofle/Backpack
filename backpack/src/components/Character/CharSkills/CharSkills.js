@@ -6,6 +6,10 @@ const styles = theme => ({
     textField: {
         margin: '2%',
     },
+    label: {
+        margin: '2% 3%',
+        float: 'left',
+    },
 });
 
 const charSkills = (props) => {
@@ -28,6 +32,7 @@ const charSkills = (props) => {
 
     return (
         <div>
+            <h6 className={classes.label}>Skills</h6>
             {skills}
         </div>
     );

@@ -4,28 +4,20 @@ import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
     container: {
-        display: 'flex',
+        margin: '1%',
     },
     textField: {
-        margin: '1%',
-        // width: 100,
-    },
-    longTextField: {
-        margin: '2%',
-        // width: 300,
-    },
-    nameBlock: {
-        display: 'flex',
+        
         flex: 1,
-        flexDirection: 'column',
-    },
-    actionBlock: {
-        display: 'flex',
-        flex: 2,
-        flexDirection: 'column',
     },
     rowBlock: {
         display: 'flex',
+        flex: 1,
+    },
+    columnBlock: {
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
     },
 });
 
@@ -33,71 +25,71 @@ const charOverview = (props) => {
     const { classes } = props;
     return (
         <div className={classes.container}>
-            <div className={classes.nameBlock}>
+            <div className={classes.rowBlock}>
                 <TextField
                     id="character-name"
-                    placeholder="Name"
+                    label="Name"
                     defaultValue={props.name}
-                    className={classes.longTextField}
+                    className={classes.textField}
                     margin="dense"
                 /> 
                 <TextField
                     id="race"
-                    placeholder="Race"
+                    label="Race"
                     defaultValue={props.race}
-                    className={classes.longTextField}
+                    className={classes.textField}
                     margin="dense"
                 /> 
+                <TextField
+                    id="points"
+                    label="Points"
+                    defaultValue={props.points}
+                    className={classes.textField}
+                    margin="dense"
+                />
             </div>
-            <div className={classes.actionBlock}>
+            <div className={classes.columnBlock}>
                 <div className={classes.rowBlock}>
                     <TextField
                         id="sign"
-                        placeholder="Sign"
+                        label="Sign"
                         defaultValue={props.sign}
                         className={classes.textField}
                         margin="dense"
                     /> 
                     <TextField
-                        id="age"
-                        placeholder="Age"
-                        defaultValue={props.age}
+                        id="size"
+                        label="Size"
+                        defaultValue={props.size}
                         className={classes.textField}
                         margin="dense"
                     />
                     <TextField
-                        id="points"
-                        placeholder="CR"
-                        defaultValue={props.points}
+                        id="age"
+                        label="Age"
+                        defaultValue={props.age}
                         className={classes.textField}
                         margin="dense"
                     />
                 </div>
                 <div className={classes.rowBlock}>
                     <TextField
-                        id="size"
-                        placeholder="Size"
-                        defaultValue={props.size}
-                        className={classes.textField}
-                        margin="dense"
-                    />
-                    <TextField
                         id="initiative"
-                        placeholder="Initiative"
+                        label="Initiative"
                         defaultValue={props.initiative}
                         className={classes.textField}
                         margin="dense"
                     />
                     <TextField
                         id="move"
-                        placeholder="Move"
+                        label="Move"
                         defaultValue={props.move}
                         className={classes.textField}
                         margin="dense"
                     /> 
                     <TextField
                         id="actions"
-                        placeholder="Actions"
+                        label="Actions"
                         defaultValue={props.actions}
                         className={classes.textField}
                         margin="dense"

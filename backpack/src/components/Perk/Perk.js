@@ -1,5 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -13,53 +12,47 @@ import Image from '../../components/UI/Image/Image';
 import Details from '../../components/UI/Details/Details';
 import Tags from '../../components/UI/Tags/Tag';
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-    fontVariant: 'all-small-caps',
-  },  
-});
-
 const perk = (props) => {
-    const { classes } = props;
 
     return (
-      <div className={classes.root}>
-        <ExpansionPanel square={false}>
+      <ExpansionPanel square={false}>
 
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1c-content">
-            <Icon icon={props.icon}/>
-            <Heading text={props.title}/>
-            <Heading text={props.benefit}/>
-            <Heading text={props.cost}/>
-          </ExpansionPanelSummary>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1c-content">
+          <Icon icon={props.icon}/>
+          <Heading text={props.title}/>
+        </ExpansionPanelSummary>
 
-          <ExpansionPanelDetails>
-            <div>
-              <Image 
-                title={"Image"}
-                image={props.image}/>
-              <Details 
-                heading={"Description"} 
-                info={props.description}/>
-              <Details 
-                heading={"Lore"} 
-                info={props.lore}/>
-            </div>
-          </ExpansionPanelDetails>
+        <ExpansionPanelDetails>
+          <div>
+            <Image 
+              title={"Image"}
+              image={props.image}/>
+            <Details 
+              heading={"Cost"}
+              info={props.cost}/>
+            <Details 
+              heading={"Benefit"}
+              info={props.benefit}/>
+            <Details 
+              heading={"Description"} 
+              info={props.description}/>
+            <Details 
+              heading={"Lore"} 
+              info={props.lore}/>
+          </div>
+        </ExpansionPanelDetails>
 
-          <ExpansionPanelActions>
-            <Tags tags={props.tags}/>
-            <Button size="small" color="primary">
-              Add
-            </Button>
-          </ExpansionPanelActions>   
+        <ExpansionPanelActions>
+          <Tags tags={props.tags}/>
+          <Button size="small" color="primary">
+            Add
+          </Button>
+        </ExpansionPanelActions>   
 
-        </ExpansionPanel>
-      </div>
+      </ExpansionPanel>
     );
 }
 
-export default withStyles(styles)(perk);
+export default perk;
